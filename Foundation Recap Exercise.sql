@@ -38,6 +38,7 @@ WHERE ps.Hospital NOT IN ('Oxleas', 'PRUH')
     AND ps.ward LIKE '%surgery'
 ORDER BY ps.admittedDate DESC, ps.patientID DESC
 	
+    SELECT count (*) AS [numberofpatients] from patientstay 
 /*
 5. How many patients has each hospital admitted? 
 6. How much is the total tarriff for each hospital?
