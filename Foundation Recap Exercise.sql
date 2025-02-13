@@ -6,9 +6,10 @@ This lists 44 patients admitted to London hospitals over 5 days between Feb 26th
 */
 
 SELECT
-	*
+    *
 FROM
-	PatientStay ps ;
+    PatientStay ps
+;
 
 /*
 1. List the patients -
@@ -23,7 +24,16 @@ c) only the Surgery wards
 
 -- Write the SQL statement here
 
-
+SELECT
+    ps.PatientID, ps.AdmittedDate, ps.DischargeDate, ps.Ward, ps.Hospital,
+    DATEDIFF (DAY, ps.admittedDate, ps.DischargeDate) + 1 AS LengthOfStay
+FROM
+    PatientStay ps
+WHERE ps.Hospital not in ('Oxleas', 'PRUH')
+    AND ps.AdmittedDate BETWEEN '2024-02-01' AND '2024-02-29'
+    and ps.ward LIKE '%surgery'
+order by ps.admittedDate DESC, ps.patientID DESC
+	
 /*
 5. How many patients has each hospital admitted? 
 6. How much is the total tarriff for each hospital?
