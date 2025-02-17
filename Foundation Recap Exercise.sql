@@ -24,21 +24,7 @@ c) only the Surgery wards
 
 -- Write the SQL statement here
 
-SELECT
-    ps.PatientID
-    ,ps.AdmittedDate
-    ,ps.DischargeDate
-    ,ps.Ward
-    ,ps.Hospital
-    ,DATEDIFF (DAY, ps.admittedDate, ps.DischargeDate) + 1 AS LengthOfStay
-FROM
-    PatientStay ps
-WHERE ps.Hospital NOT IN ('Oxleas', 'PRUH')
-    AND ps.AdmittedDate BETWEEN '2024-02-01' AND '2024-02-29'
-    AND ps.ward LIKE '%surgery'
-ORDER BY ps.admittedDate DESC, ps.patientID DESC
-	
-    SELECT count (*) AS [numberofpatients] from patientstay 
+
 /*
 5. How many patients has each hospital admitted? 
 6. How much is the total tarriff for each hospital?
